@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_discord/widget/HomeScreen.dart';
+import 'package:flutter_discord/page/HomeScreen.dart';
 
 void main() {
   runApp(DiscordApp());
 }
+
 class DiscordApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
