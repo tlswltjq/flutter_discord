@@ -1,12 +1,7 @@
 import 'package:flutter_discord/api/const.dart';
 import 'package:http/http.dart' as http;
 
-abstract class ApiService{
-  Future<http.Response> getServerList(String memberId);
-  Future<http.Response> getChannelList(int serverId);
-}
-
-class ApiServiceImpl implements ApiService{
+class ApiService{
   final String baseUrl = BASE_URL;
   
     @override
