@@ -1,5 +1,5 @@
 class Server {
-  final String id;
+  final int id;
   final String name;
   final String ownerId;
 
@@ -9,7 +9,7 @@ class Server {
     required this.ownerId,
   });
 
-  factory Server.fromJson(Map<String, dynamic> json) {
+  factory Server.fromJson(Map<dynamic, dynamic> json) {
     return Server(
       id: json['id'],
       name: json['name'],
@@ -17,11 +17,16 @@ class Server {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Map<dynamic, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
       'ownerId': ownerId,
     };
+  }
+
+  @override
+  String toString() {
+    return 'Server{id: $id, name: $name, ownerID : $ownerId}';
   }
 }
