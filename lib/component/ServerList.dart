@@ -31,7 +31,6 @@ class _ServerListState extends State<ServerList> {
     setState(() {
       widget.serverList = serverList;
     });
-    logger.i("요청 보냄");
     logger.i(widget.serverList);
   }
 
