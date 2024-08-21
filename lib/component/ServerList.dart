@@ -39,9 +39,6 @@ class _ServerListState extends State<ServerList> {
   Widget build(BuildContext context) {
     logger.i("빌드시작");
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Server List'),
-      ),
       body: ListView.builder(
         itemCount: widget.serverList.length,
         itemBuilder: (context, index) {
