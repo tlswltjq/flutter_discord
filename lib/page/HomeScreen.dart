@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void fetchServerList() async {
     try {
-      logger.i("Fetching!! >:D");
+      logger.i("ServerList Fetching!! >:D");
       List<Server> fetchedServerList = await apiService.getServerList(memberId);
       setState(() {
         serverList = fetchedServerList;
