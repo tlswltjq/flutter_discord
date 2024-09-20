@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_diary/api/Api.dart';
 import 'package:flutter_diary/model/Todo.dart';
 import 'package:flutter_diary/widgets/TodoList.dart';
 
@@ -8,24 +9,27 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
-  final List<Todo> _list = [
-    Todo(
-      todoID: 1,
-      todoTitle: '밥먹기',
-      done: false,
-    ),
-    Todo(
-      todoID: 2,
-      todoTitle: '잠자기',
-      done: false,
-    ),
-    Todo(
-      todoID: 3,
-      todoTitle: 'ㅡㅔ',
-      done: false,
-    ),
-  ];
+  final ApiService apiService = ApiService();
+  List<Todo> _list = [];
 
+  @override
+  void initState() {
+    super.initState();
+    _fetchTodoList();
+  }
+
+  Future<void> _fetchTodoList() async {
+    try {
+      final listId = '1';
+      List<Todo> todos = await apiService.getTodoList(listId);
+      setState(() {
+        _list = todos;
+      });
+    } catch (e) {
+      // Handle error
+      print('Failed to fetch todo list: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

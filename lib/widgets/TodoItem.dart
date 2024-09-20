@@ -17,15 +17,16 @@ class _TodoItemState extends State<TodoItem> {
   @override
   void initState() {
     super.initState();
-    isCompleted = widget.todo.done;
+    isCompleted = widget.todo.isDone;
   }
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        widget.todo.todoTitle,
+        widget.todo.descritpion,
         style: TextStyle(
+          backgroundColor: Color.fromRGBO(255, 0, 0, 0.1),
           decoration: isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
         ),
       ),

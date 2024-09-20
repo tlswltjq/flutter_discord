@@ -7,7 +7,8 @@ class SplitLayout extends StatelessWidget {
   final List<Map<int, Widget>> widgets;
   final int axis;
 
-  SplitLayout({
+  const SplitLayout({
+    super.key,
     required this.widgets,
     required this.axis,
   });
