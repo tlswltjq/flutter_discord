@@ -11,6 +11,8 @@ class TodoPage extends StatefulWidget {
 class _TodoPageState extends State<TodoPage> {
   final ApiService apiService = ApiService();
   List<Todo> _list = [];
+  TextEditingController _textFieldController = TextEditingController();
+  final listId = '1';
 
   @override
   void initState() {
@@ -20,13 +22,11 @@ class _TodoPageState extends State<TodoPage> {
 
   Future<void> _fetchTodoList() async {
     try {
-      final listId = '1';
       List<Todo> todos = await apiService.getTodoList(listId);
       setState(() {
         _list = todos;
       });
     } catch (e) {
-      // Handle error
       print('Failed to fetch todo list: $e');
     }
   }
@@ -42,6 +42,45 @@ class _TodoPageState extends State<TodoPage> {
           child: TodoList(todos: _list),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add_task),
+          onPressed: () {
+            _showDialog(context);
+          }),
+    );
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add a new todo'),
+          content: TextField(
+            controller: _textFieldController,
+            decoration: InputDecoration(hintText: 'Enter your todo'),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Submit'),
+              onPressed: () {
+                // Handle the submit action
+                String todoText = _textFieldController.text;
+                apiService.addTodo(todoText, listId);
+                print('Submitted todo: $todoText');
+                _textFieldController.clear();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
