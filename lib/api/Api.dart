@@ -11,6 +11,8 @@ abstract class TodoListService {
 
 abstract class TodoService {
   Future<String> addTodo(String description, String listId);
+  Future<String> doneTodo(String todoId);
+  Future<String> unDoneTodo(String todoId);
 }
 
 class ApiService implements TodoListService, TodoService {
@@ -49,6 +51,28 @@ class ApiService implements TodoListService, TodoService {
     
     if(response.statusCode == 200){
         return response.body;
+    }else{
+      throw Exception('Failed to create todo list');
+    }
+  }
+  
+  @override
+  Future<String> doneTodo(String todoId) async{
+    final url = Uri.parse('$baseUrl/todo/done/$todoId');
+    final response = await http.put(url);
+    if(response.statusCode==200){
+      return response.body;
+    }else{
+      throw Exception('Failed to create todo list');
+    }
+  }
+  
+  @override
+  Future<String> unDoneTodo(String todoId) async{
+    final url = Uri.parse('$baseUrl/todo/undone/$todoId');
+    final response = await http.put(url);
+    if(response.statusCode==200){
+      return response.body;
     }else{
       throw Exception('Failed to create todo list');
     }

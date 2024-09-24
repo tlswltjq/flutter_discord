@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_diary/api/Api.dart';
 import 'package:flutter_diary/model/Todo.dart';
 
 class TodoItem extends StatefulWidget {
@@ -12,12 +12,13 @@ class TodoItem extends StatefulWidget {
 }
 
 class _TodoItemState extends State<TodoItem> {
-  late bool isCompleted;
+  final ApiService apiService = ApiService();
+  late bool isDone;
 
   @override
   void initState() {
     super.initState();
-    isCompleted = widget.todo.isDone;
+    isDone = widget.todo.isDone;
   }
 
   @override
@@ -26,15 +27,20 @@ class _TodoItemState extends State<TodoItem> {
       title: Text(
         widget.todo.descritpion,
         style: TextStyle(
-          backgroundColor: Color.fromRGBO(255, 0, 0, 0.1),
-          decoration: isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+          backgroundColor: Color.fromRGBO(0, 0, 0, 0.098),
+          decoration: isDone ? TextDecoration.lineThrough : TextDecoration.none,
         ),
       ),
       trailing: Checkbox(
-        value: isCompleted,
+        value: isDone,
         onChanged: (bool? value) {
           setState(() {
-            isCompleted = value ?? false;
+            isDone = value ?? false;
+            if (isDone) {
+              apiService.doneTodo(widget.todo.id.toString());
+            } else {
+              apiService.unDoneTodo(widget.todo.id.toString());
+            }
           });
         },
       ),
