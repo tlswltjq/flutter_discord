@@ -25,6 +25,11 @@ class _TodoPageState extends State<TodoPage> {
       List<Todo> todos = await apiService.getTodoList(listId);
       setState(() {
         _list = todos;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Fetching done...'),
+          ),
+        );
       });
     } catch (e) {
       print('Failed to fetch todo list: $e');
@@ -69,13 +74,13 @@ class _TodoPageState extends State<TodoPage> {
             ),
             TextButton(
               child: Text('Submit'),
-              onPressed: () {
+              onPressed: () async {
                 // Handle the submit action
                 String todoText = _textFieldController.text;
-                apiService.addTodo(todoText, listId);
-                print('Submitted todo: $todoText');
+                await apiService.addTodo(todoText, listId);
                 _textFieldController.clear();
                 Navigator.of(context).pop();
+                _fetchTodoList();
               },
             ),
           ],
