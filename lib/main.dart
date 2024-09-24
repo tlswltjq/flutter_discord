@@ -30,11 +30,6 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         body: _currentWidget,
-        // floatingActionButton: FloatingActionButton(
-        //     child: const Icon(Icons.light),
-        //     onPressed: () {
-        //       print(DateTime.now().weekday);
-        //     }),
         persistentFooterButtons: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
