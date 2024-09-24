@@ -75,11 +75,10 @@ class _TodoPageState extends State<TodoPage> {
             TextButton(
               child: Text('Submit'),
               onPressed: () async {
-                // Handle the submit action
+                Navigator.of(context).pop();
                 String todoText = _textFieldController.text;
                 await apiService.addTodo(todoText, listId);
                 _textFieldController.clear();
-                Navigator.of(context).pop();
                 _fetchTodoList();
               },
             ),
