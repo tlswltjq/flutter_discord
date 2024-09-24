@@ -36,6 +36,12 @@ class _TodoPageState extends State<TodoPage> {
     }
   }
 
+  void _handleDismissed(Todo todo) {
+    setState(() {
+      _list.remove(todo);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +50,10 @@ class _TodoPageState extends State<TodoPage> {
       ),
       body: Center(
         child: Container(
-          child: TodoList(todos: _list),
+          child: TodoList(
+            todos: _list,
+            onDismissed: _handleDismissed,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
