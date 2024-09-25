@@ -27,7 +27,8 @@ class TodoList extends StatelessWidget {
               ),
             );
           },
-          background: Container(color: Colors.red),
+          direction: DismissDirection.endToStart,
+          background: Container(color: Colors.yellow),
         );
       },
     );
