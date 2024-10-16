@@ -3,12 +3,17 @@ import 'package:flutter_diary/page/ArticlePage.dart';
 import 'package:flutter_diary/page/GrassPage.dart';
 import 'package:flutter_diary/page/MainPage.dart';
 import 'package:flutter_diary/page/TodoPage.dart';
+import 'package:logger/logger.dart';
 
 void main() {
+  var logger = Logger(
+    printer: PrettyPrinter(),
+  );
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
+
   @override
   _MyAppState createState() => _MyAppState();
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_diary/layouts/SplitLayout.dart';
+import 'package:flutter_diary/widgets/Grass.dart';
 
 class GrassPage extends StatelessWidget {
   @override
@@ -9,8 +10,9 @@ class GrassPage extends StatelessWidget {
       body: Center(
         // child: Text("Grass"),
         child: SplitLayout(axis: 1, widgets: [
-          {1: Container(color : Colors.green, child: Center(child: Text("Grass")))},
+          {1: Container(color : Colors.green, child: Center(child: Grass()))},
           {1: Container(child: Center(child: Text("로그 표시할 자리")))},
+          
         ]),
       ),
     );
