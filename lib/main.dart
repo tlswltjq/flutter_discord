@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_diary/page/ArticlePage.dart';
-import 'package:flutter_diary/page/GrassPage.dart';
+import 'package:flutter_diary/page/ActivityPage.dart';
 import 'package:flutter_diary/page/MainPage.dart';
 import 'package:flutter_diary/page/TodoPage.dart';
 import 'package:logger/logger.dart';
@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.grass),
-                    onPressed: () => _changeWidget(GrassPage()),
+                    onPressed: () => _changeWidget(ActivityPage()),
                   ),
                   IconButton(
                     icon: const Icon(Icons.article),

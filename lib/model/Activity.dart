@@ -16,4 +16,8 @@ class Activity{
       timeStamp: DateTime.parse(json['timeStamp'])
       );
   }
+  @override
+  String toString() {
+    return 'Activity(doName: $doName, type: $type, timeStamp: $timeStamp)';
+  }
 }
