@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_diary/layouts/SplitLayout.dart';
+import 'package:flutter_diary/widgets/ActivityLog.dart';
 import 'package:flutter_diary/widgets/Grass.dart';
 import 'package:flutter_diary/api/Api.dart';
 import 'package:flutter_diary/model/Activity.dart';
@@ -64,8 +65,8 @@ class _ActivityPage extends State<ActivityPage> {
       appBar: AppBar(title: Text("기록")),
       body: Center(
         child: SplitLayout(axis: 1, widgets: [
-          {1: Container(color: Colors.green, child: Center(child: Grass(activityList)))},
-          {1: Container(child: Center(child: Text("로그 표시할 자리")))},
+          {1: Container(child: Center(child: Grass(activityList)))},
+          {1: Container(child: Center(child: ActivityLog(activityList)))},
         ]),
       ),
     );
