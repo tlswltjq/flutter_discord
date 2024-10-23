@@ -8,7 +8,6 @@ class ActivityLog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Group activities by date
     Map<String, List<Activity>> groupedActivities = {};
     for (var activity in activityList) {
       String date = activity.timeStamp.toLocal().toString().split(' ')[0];
@@ -18,7 +17,6 @@ class ActivityLog extends StatelessWidget {
       groupedActivities[date]!.add(activity);
     }
 
-    // Sort the grouped activities by date in descending order
     var sortedKeys = groupedActivities.keys.toList()
       ..sort((a, b) => b.compareTo(a));
 
